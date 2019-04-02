@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Sanrakshak</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" type= "text/css" href="css/main.css" />
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+
+<!--  <script>
+    function initmap() {
+      var location = {lat: 12.9722944 , lng: 79.1607543};
+      var map =  new google.maps.Map(document.getElementById("map"),{
+        zoom: 4,
+        center: location
+      });
+    }
+  </script>
+  <script async defer src="https://maps.googleapis.com/maps/js?key=AIzaSyBYzXj5wF4L6mChyyc5xwfb2QT1QEZ9VN8"></script>-->
+</head>
+<style>
+    .line-chart
+    {
+        border: 1px solid lightgray;
+    }
+</style>
+<body>
+	<!--navbar-->
+    <nav class="navbar navbar-expand-lg fixed-top ">
+    	<a class="navbar-brand" href="#"><img src="images/shield.png" alt="Logo" style="max-width: 35px"></a>
+    	<a class="navbar-brand" href="#">Sanrakshak</a>
+    	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    		<span class="navbar-toggler-icon"></span>
+  		</button>
+		<div class="collapse navbar-collapse " id="navbarSupportedContent">
+		    <ul class="navbar-nav mr-4">
+ 				<li class="nav-item">
+     				<a class="nav-link" data-value="about" href="#">Home</a></li>  
+				<li class="nav-item">
+    				<a class="nav-link " data-value="portfolio"href="#">About</a>    
+ 				</li>
+ 				<li class="nav-item dropdown"> 
+    				<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Services</a>
+                    <div class="dropdown-menu">
+        				<a class="dropdown-item " href="#">Track</a>
+        				<a class="dropdown-item " href="#">Monitor</a>
+        			</div>  
+      			</li>	 
+				<!--<li class="nav-item">  
+   					<a class="nav-link " data-value="team" href="#">Blog</a></li>  
+				<li class="nav-item"> 
+ 					<a class="nav-link " data-value="contact" href="#">Team</a></li>-->
+ 				<li class="nav-item"> 
+ 					<a class="nav-link " data-value="contact" href="#">Contact</a></li>
+          <li class="nav-item"> 
+          <a class="nav-link " data-value="sign" href="login.html">Log out</a></li>
+          	 
+			</ul> 
+		</div>
+	</nav>
+	<!--Header-->
+	<header class="header">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="description ">
+                <h1>Hello ,Welcome To Sanrakshak Website
+                <p> “The ache for home lives in all of us. The safe place where we can go as we are and not be questioned.” 
+                     ― Maya Angelou 
+                </p>   
+                <button class="btn btn-outline-secondary btn-lg">See more</button></h1>  
+            </div>
+        </div>
+	</header>
+	<!--About-->
+	
+	<section class="about">
+		
+		<div class="row">
+
+		<div class="col-lg-4 col-md-4 col-sm-12">
+			<!--<img src="images/map.jpg" class="img-fluid">-->
+			<h1 id="about-h1"> About Us</h1>
+        	<span class="text-justify"></span>
+    	</div>
+    	  <div class="col-lg-8 col-md-8 col-sm-12 desc">
+              
+    		  <p>
+             We are Sanrakshak. We made a device to protect the women.   
+    		</p>
+   		</div>
+	</div>
+</section>
+
+
+<!--service-->
+<section class="about">
+		
+		<div class="row">
+              <div class="col-lg-4 col-md-4 col-sm-12">
+      <!--<img src="images/map.jpg" class="img-fluid">-->
+      <h1 id="about-h1"> Services</h1>
+          <span class="text-justify"></span>
+      </div>
+		<!--<div class="col-lg-4 col-md-4 col-sm-12">
+			<img src="images/map.jpg" class="img-fluid">
+			
+        	<span class="text-justify"></span>
+    	</div>-->
+    	  <!--<div class="col-lg-8 col-md-8 col-sm-12 desc">-->
+        <!--  <div class="mapouter" style="padding: 60px 0px 0px 0px !important">-->
+          <div class="col-lg-8 col-md-8 col-sm-12 desc">
+        <div class="gmap_canvas">
+          <iframe width="727" height="410" id="gmap_canvas" src="https://maps.google.com/maps?q=Vellore&t=&z=9&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+            
+         </div>
+          
+          <!--<svg></svg>--><br>
+          
+          
+          
+           
+         
+        <!--</div><style>.mapouter{text-align:right;height:410px;width:727px;}.gmap_canvas {overflow:hidden;background:none!important;height:410px;width:727px;}</style>
+      </div>
+        <div id="map"> -->     
+    		<!--  <p>
+              After seeing an increased cases of women being exposed to 
+    		</p>-->
+
+   		</div>
+	</div>
+</section>
+<section>
+  <center><img src="images/Capture.PNG" alt="Chart" style="width:500px;height:300px;"></center>
+  </section>
+
+<!--blog section
+
+<div class="blog">
+ <div class="container">
+ <h1 class="text-center">Blog</h1>
+  <div class="row">
+   <div class="col-md-4 col-lg-4 col-sm-12">
+    <div class="card">
+     <div class="card-img">
+      <img src="images/location.jpg" class="img-fluid">
+     </div>
+     
+     <div class="card-body">
+     <h4 class="card-title">Blog1</h4>
+      <p class="card-text">
+       
+       Text1
+      </p>
+     </div>
+     <div class="card-footer">
+      <a href="" class="card-link">Read more</a>
+     </div>
+    </div>
+   </div>
+   <div class="col-md-4 col-lg-4 col-sm-12">
+    <div class="card">
+     <div class="card-img">
+      <img src="images/temperature.jpg" class="img-fluid">
+     </div>
+     
+     <div class="card-body">
+        <h4 class="card-title">Blog2</h4>
+      <p class="card-text">
+       
+       Text2
+      </p>
+     </div>
+     <div class="card-footer">
+      <a href="" class="card-link">Read more</a>
+     </div>
+    </div>
+   </div>
+   <div class="col-md-4 col-lg-4 col-sm-12">
+    <div class="card">
+     <div class="card-img">
+      <img src="images/heart-rate.jpg" class="img-fluid">
+     </div>
+     
+     <div class="card-body">
+     <h4 class="card-title">Block3</h4>
+      <p class="card-text">
+       
+       Text4
+      </p>
+     </div>
+     <div class="card-footer">
+      <a href="" class="card-link">Read more</a>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+</div>-->
+
+<!--team
+<div class="team">
+ <div class="container">
+    <h1 class="text-center">Our Team</h1>
+  <div class="row">
+   <div class="col-lg-4 col-md-4 col-sm-12 item">
+    <img src="images/r.jpg" class="img-fluid" alt="team">
+    <div class="des">
+      Rithik
+     </div>
+    <span class="text-muted">Manager & Cloud King</span>
+   </div>
+   <div class="col-lg-4 col-md-4 col-sm-12 item">
+    <img src="images/k.jpg" class="img-fluid" alt="team">
+    <div class="des">
+       Kanak
+     </div>
+    <span class="text-muted">IoT Expert & God of Android Application</span>
+   </div>
+   <div class="col-lg-4 col-md-4 col-sm-12 item">
+    <img src="images/u.jpg" class="img-fluid" alt="team">
+    <div class="des">
+      Ujjwal
+     </div>
+    <span class="text-muted">Noob web Developer</span>
+   </div>
+    </div>
+</div>-->
+
+<!-- Contact form -->
+<div class="contact-form" style="padding: 150px 0px 0px 0px !important;">
+ <div class="container">
+  <form>
+   <div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-12">
+      <h1>Get in Touch</h1> 
+    </div>
+    <div class="col-lg-8 col-md-8 col-sm-12 right">
+       <div class="form-group">
+         <input type="text" class="form-control form-control-lg" placeholder="Your Name" name="">
+       </div>
+       <div class="form-group">
+         <input type="email" class="form-control form-control-lg" placeholder="YourEmail@email.com" name="email">
+       </div>
+       <div class="form-group">
+         <textarea class="form-control form-control-lg">
+          
+         </textarea>
+       </div>
+       <input type="submit" class="btn btn-secondary btn-block" value="Send" name="">
+    </div>
+   </div>
+  </form>
+ </div>
+</div>
+
+<div class="contianer-fluid" style="background: black !important;overflow-x: hidden">
+<div class="row" id="footer">
+  <div class="col-sm-12 col-lg-4 col-md-4">
+
+  </div>
+  
+</div>
+  </div>
+
+
+
+	</body>
+  <script>
+
+d3.csv("feeds.csv", function(data) {
+      var field = [];
+      var k =0;
+      for(var i=0;i<data.length;i++){
+        
+         field[k] =  parseInt(data[i].field1)
+        
+        k++;
+
+      }
+      console.log(field);
+     drawchart(field); 
+      
+    
+});
+function drawchart(data){
+var svgWidth = 600, svgHeight = 400;
+   var margin = { top: 20, right: 20, bottom: 30, left: 50 };
+   var width = svgWidth - margin.left - margin.right;
+   var height = svgHeight - margin.top - margin.bottom;
+   var svg = d3.select('svg')
+     .attr("width", svgWidth)
+     .attr("height", svgHeight);
+   var g = svg.append("g")
+   .attr("transform", 
+      "translate(" + margin.left + "," + margin.top + ")"
+   );
+   var x = d3.scaleLinear().rangeRound([0, width]);
+var y = d3.scaleLinear().rangeRound([height, 0]);
+   y_x = []
+   for(var jj = 1;jj<92;jj++){
+     y_x[jj-1] = jj;
+   }
+var line = d3.line()
+   .x(function(d) { return x(d)})
+   .y(function(d1) { return y(d1)})
+   x.domain(d3.extent(data, function(d) { return d }));
+   y.domain(d3.extent(y_x, function(d1) { return d1 }));
+g.append("g")
+   .attr("transform", "translate(0," + height + ")")
+   .call(d3.axisBottom(x))
+   .select(".domain")
+   .remove();
+   g.append("g")
+   .call(d3.axisLeft(y))
+   .append("text")
+   .attr("fill", "#000")
+   .attr("transform", "rotate(-90)")
+   .attr("y", 6)
+   .attr("dy", "0.71em")
+   .attr("text-anchor", "end")
+   .text("BP");
+
+   g.append("path")
+.datum(data)
+.attr("fill", "none")
+.attr("stroke", "steelblue")
+.attr("stroke-linejoin", "round")
+.attr("stroke-linecap", "round")
+.attr("stroke-width", 1.5)
+.attr("d", line);
+
+
+}
+
+
+  </script>
+
+
+</html>
