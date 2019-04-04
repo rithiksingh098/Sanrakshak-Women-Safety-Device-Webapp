@@ -1,209 +1,255 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<title>Sanrakshak</title>
+  <title>Sanrakshak</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<link rel="stylesheet" type= "text/css" href="css/main.css" />
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-	<script type="text/javascript" src="js/main.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="/public/css/main.css" />
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" src="/public/js/main.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/brands.css"
+    integrity="sha384-n9+6/aSqa9lBidZMRCQHTHKJscPq6NW4pCQBiMmHdUCvPN8ZOg2zJJTkC7WIezWv" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/fontawesome.css"
+    integrity="sha384-vd1e11sR28tEK9YANUtpIOdjGW14pS87bUBuOIoBILVWLFnS+MCX9T6MMf0VdPGq" crossorigin="anonymous">
   <script src="https://d3js.org/d3.v4.min.js"></script>
 
-<!--  <script>
-    function initmap() {
-      var location = {lat: 12.9722944 , lng: 79.1607543};
-      var map =  new google.maps.Map(document.getElementById("map"),{
-        zoom: 4,
-        center: location
-      });
+  <script>
+    console.log("<%= latitude%>");
+    function initMap() {
+        var location = { lat: <%= latitude%>, lng: <%= longitude%> };
+    // var location = {lat: 12.9722944 , lng: 79.1607543};
+    var maps = new google.maps.Map(document.getElementById("map"), {
+      zoom: 10,
+      center: location
+    });
+    var marker = new google.maps.Marker({
+      position: location,
+      map: maps
+    });
     }
   </script>
-  <script async defer src="https://maps.googleapis.com/maps/js?key=AIzaSyBYzXj5wF4L6mChyyc5xwfb2QT1QEZ9VN8"></script>-->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDd3JdKiBloHDGLYkxH4yS5y1sMa-2r_o4&callback=initMap"
+    async defer></script>
+  <style type="text/css">
+    .dot {
+      fill: #ffab00;
+      stroke: #fff;
+    }
+
+    .focus circle {
+      fill: none;
+      stroke: steelblue;
+    }
+
+    .line {
+      fill: none;
+      stroke: #ffab00;
+      stroke-width: 3;
+    }
+  </style>
+
 </head>
 <style>
-    .line-chart
-    {
-        border: 1px solid lightgray;
-    }
+  #map {
+    height: 400px;
+    width: auto;
+  }
 </style>
+<style>
+  .line-chart {
+    border: 1px solid lightgray;
+  }
+</style>
+
 <body>
-	<!--navbar-->
-    <nav class="navbar navbar-expand-lg fixed-top ">
-    	<a class="navbar-brand" href="#"><img src="images/shield.png" alt="Logo" style="max-width: 35px"></a>
-    	<a class="navbar-brand" href="#">Sanrakshak</a>
-    	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    		<span class="navbar-toggler-icon"></span>
-  		</button>
-		<div class="collapse navbar-collapse " id="navbarSupportedContent">
-		    <ul class="navbar-nav mr-4">
- 				<li class="nav-item">
-     				<a class="nav-link" data-value="about" href="#">Home</a></li>  
-				<li class="nav-item">
-    				<a class="nav-link " data-value="portfolio"href="#">About</a>    
- 				</li>
- 				<li class="nav-item dropdown"> 
-    				<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Services</a>
-                    <div class="dropdown-menu">
-        				<a class="dropdown-item " href="#">Track</a>
-        				<a class="dropdown-item " href="#">Monitor</a>
-        			</div>  
-      			</li>	 
-				<!--<li class="nav-item">  
-   					<a class="nav-link " data-value="team" href="#">Blog</a></li>  
-				<li class="nav-item"> 
- 					<a class="nav-link " data-value="contact" href="#">Team</a></li>-->
- 				<li class="nav-item"> 
- 					<a class="nav-link " data-value="contact" href="#">Contact</a></li>
-          <li class="nav-item"> 
-          <a class="nav-link " data-value="sign" href="login.html">Log out</a></li>
-          	 
-			</ul> 
-		</div>
-	</nav>
-	<!--Header-->
-	<header class="header">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="description ">
-                <h1>Hello ,Welcome To Sanrakshak Website
-                <p> “The ache for home lives in all of us. The safe place where we can go as we are and not be questioned.” 
-                     ― Maya Angelou 
-                </p>   
-                <button class="btn btn-outline-secondary btn-lg">See more</button></h1>  
-            </div>
-        </div>
-	</header>
-	<!--About-->
-	
-	<section class="about">
-		
-		<div class="row">
+  <!--navbar-->
+  <nav id="ubar" class="navbar navbar-expand-lg fixed-top "
+    style="background:linear-gradient(to right,   #FFD700, #8B4513) !important;">
+    <a class="navbar-brand" href="index.html"><img src="/public/images/shield.png" alt="Logo"
+        style="max-width: 35px"></a>
+    <a class="navbar-brand" href="index.html" style="color: #000000 !important"><b>Sanrakshak</b></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+      <ul class="navbar-nav mr-4">
+        <li class="nav-item">
+          <a class="nav-link" data-value="about" href="#uhead" style="color: #000000 !important"><b>Home</b></a></li>
+        <li class="nav-item">
+          <a class="nav-link " data-value="portfolio" href="#uabout" style="color: #000000 !important"><b>About</b></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#uservice" id="navbardrop" data-toggle="dropdown"
+            style="color: #000000 !important"><b>Services</b></a>
+          <div class="dropdown-menu" style="background:linear-gradient(to right,   #FFD700, #8B4513) !important;">
+            <a class="dropdown-item " href="#">Track</a>
+            <a class="dropdown-item " href="#">Monitor</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " data-value="team" href="#ublog" style="color: #000000 !important"><b>Blog</b></a></li>
 
-		<div class="col-lg-4 col-md-4 col-sm-12">
-			<!--<img src="images/map.jpg" class="img-fluid">-->
-			<h1 id="about-h1"> About Us</h1>
-        	<span class="text-justify"></span>
-    	</div>
-    	  <div class="col-lg-8 col-md-8 col-sm-12 desc">
-              
-    		  <p>
-             We are Sanrakshak. We made a device to protect the women.   
-    		</p>
-   		</div>
-	</div>
-</section>
+        <li class="nav-item">
+          <a class="nav-link " data-value="contact" href="#ucontact"
+            style="color: #000000 !important"><b>Contact</b></a></li>
+        <li class="nav-item">
+          <a class="nav-link " data-value="sign" href="login.html" style="color: #000000 !important"><b>Log out</b></a>
+        </li>
 
-
-<!--service-->
-<section class="about">
-		
-		<div class="row">
-              <div class="col-lg-4 col-md-4 col-sm-12">
-      <!--<img src="images/map.jpg" class="img-fluid">-->
-      <h1 id="about-h1"> Services</h1>
-          <span class="text-justify"></span>
+      </ul>
+    </div>
+  </nav>
+  <!--Header-->
+  <header class="header" id="uhead">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="description ">
+        <h1>Hello ,Welcome To Sanrakshak
+          <p style="color: black !important"> “The ache for home lives in all of us. The safe place where we can go as
+            we are and not be questioned.”
+            ― Maya Angelou
+          </p>
+          <!-- <button class="btn btn-outline-secondary btn-lg" style="background-color:#FFA500 !important; color: #000 ">See more</button></h1>-->
       </div>
-		<!--<div class="col-lg-4 col-md-4 col-sm-12">
-			<img src="images/map.jpg" class="img-fluid">
-			
-        	<span class="text-justify"></span>
-    	</div>-->
-    	  <!--<div class="col-lg-8 col-md-8 col-sm-12 desc">-->
-        <!--  <div class="mapouter" style="padding: 60px 0px 0px 0px !important">-->
-          <div class="col-lg-8 col-md-8 col-sm-12 desc">
-        <div class="gmap_canvas">
-          <iframe width="727" height="410" id="gmap_canvas" src="https://maps.google.com/maps?q=Vellore&t=&z=9&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-            
-         </div>
-          
-          <!--<svg></svg>--><br>
-          
-          
-          
-           
-         
-        <!--</div><style>.mapouter{text-align:right;height:410px;width:727px;}.gmap_canvas {overflow:hidden;background:none!important;height:410px;width:727px;}</style>
-      </div>
-        <div id="map"> -->     
-    		<!--  <p>
-              After seeing an increased cases of women being exposed to 
-    		</p>-->
+    </div>
+  </header>
+  <!--About-->
+  <h1 id="about-h1" style="padding: 50px 0px 0px 0px !important; color: #F97300 !important;">About Us</h1>
+  <section class="about" id="uabout"> 
+    <div class=" desc" style="text-align: center !important;">
+      <p>
+        We are Sanrakshak. We made a device to protect the women.
+      </p>
+    </div>
 
-   		</div>
-	</div>
-</section>
-<section>
-  <center><img src="images/Capture.PNG" alt="Chart" style="width:500px;height:300px;"></center>
   </section>
 
-<!--blog section
+  <hr>
+  <!--service-->
+  <h1 id="uservice" style="color: #F97300 !important;text-align: center!important; padding-bottom: 70px"> Services</h1>
+  <div class="container-fluid">
 
-<div class="blog">
- <div class="container">
- <h1 class="text-center">Blog</h1>
-  <div class="row">
-   <div class="col-md-4 col-lg-4 col-sm-12">
-    <div class="card">
-     <div class="card-img">
-      <img src="images/location.jpg" class="img-fluid">
-     </div>
-     
-     <div class="card-body">
-     <h4 class="card-title">Blog1</h4>
-      <p class="card-text">
-       
-       Text1
-      </p>
-     </div>
-     <div class="card-footer">
-      <a href="" class="card-link">Read more</a>
-     </div>
+    <div class="row">
+      <div class="col-lg-4 col-md-4 col-sm-12">
+
+        <h1 id="about-h1" style="padding: 150px 0; color:#F97300 !important"> Location of Victim</h1>
+
+        <span class="text-justify"></span>
+      </div>
+
+      <div class="col-lg-6 col-md-8 col-sm-12 desc">
+        <div id="map">
+        </div>
+
+
+
+
+
+
+
+      </div>
     </div>
-   </div>
-   <div class="col-md-4 col-lg-4 col-sm-12">
-    <div class="card">
-     <div class="card-img">
-      <img src="images/temperature.jpg" class="img-fluid">
-     </div>
-     
-     <div class="card-body">
-        <h4 class="card-title">Blog2</h4>
-      <p class="card-text">
-       
-       Text2
-      </p>
-     </div>
-     <div class="card-footer">
-      <a href="" class="card-link">Read more</a>
-     </div>
+    <div class="row">
+      <div class="col-lg-4 col-md-4 col-sm-12">
+
+        <h1 id="about-h1" style="padding: 150px 0;color:#F97300 !important"> Pulse Rate of the Victim</h1>
+
+        <span class="text-justify"></span>
+      </div>
+
+      <div class="col-lg-6 col-md-8 col-sm-12 desc">
+
+
+        <svg></svg>
+
+
+      </div>
+      <div col="col-lg-4 col-md-4 col-sm-12">
+        <form action="/login" method="POST" style="padding: 170px 0 !important">
+          <button type="submit" class="btn btn-success">Refresh</button>
+
+        </form>
+      </div>
     </div>
-   </div>
-   <div class="col-md-4 col-lg-4 col-sm-12">
-    <div class="card">
-     <div class="card-img">
-      <img src="images/heart-rate.jpg" class="img-fluid">
-     </div>
-     
-     <div class="card-body">
-     <h4 class="card-title">Block3</h4>
-      <p class="card-text">
-       
-       Text4
-      </p>
-     </div>
-     <div class="card-footer">
-      <a href="" class="card-link">Read more</a>
-     </div>
-    </div>
-   </div>
   </div>
- </div>
-</div>-->
+  <hr>
+  <!--blog section-->
 
-<!--team
+  <div class="blog" id="ublog">
+    <div class="container">
+      <h1 class="text-center">Blog</h1>
+      <div class="row">
+        <div class="col-md-4 col-lg-4 col-sm-12">
+          <div class="card">
+            <div class="card-img">
+              <img src="/public/images/b1.jpg" class="img-fluid">
+            </div>
+
+            <div class="card-body">
+
+              <p class="card-text">
+
+                #MeToo Movement
+              </p>
+            </div>
+            <div class="card-footer">
+              <a href="https://blog.shrm.org/tags/sexual-harassment" class="card-link">Read more</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-lg-4 col-sm-12">
+          <div class="card">
+            <div class="card-img">
+              <img src="/public/images/b22.jpg" class="img-fluid">
+            </div>
+
+            <div class="card-body">
+
+              <p class="card-text">
+
+                Sexual Harrasment in the workplace
+              </p>
+            </div>
+            <div class="card-footer">
+              <a href="https://nwlc.org/issue/sexual-harassment-in-the-workplace/" class="card-link">Read more</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 col-lg-4 col-sm-12">
+          <div class="card">
+            <div class="card-img">
+              <img src="/public/images/b3.jpg" class="img-fluid">
+            </div>
+
+            <div class="card-body">
+
+              <p class="card-text">
+
+                Women’s Empowerment
+              </p>
+            </div>
+            <div class="card-footer">
+              <a href="https://www.bsr.org/en/topics/blog/Womens-Empowerment" class="card-link">Read more</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--team
 <div class="team">
  <div class="container">
     <h1 class="text-center">Our Team</h1>
@@ -231,115 +277,255 @@
    </div>
     </div>
 </div>-->
+  <hr>
+  <!-- Contact form -->
+  <div class="contact-form" style="padding: -80px 0px 0px 0px !important;" id="ucontact">
+    <div class="container">
+      <form>
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-12">
+            <h1 style="color: #F97300 !important;">Get in Touch</h1>
+          </div>
+          <div class="col-lg-8 col-md-8 col-sm-12 right">
+            <div class="form-group">
+              <input type="text" class="form-control form-control-lg" placeholder="Your Name" name="">
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-control form-control-lg" placeholder="YourEmail@email.com" name="email">
+            </div>
+            <div class="form-group">
+              <textarea class="form-control form-control-lg">
 
-<!-- Contact form -->
-<div class="contact-form" style="padding: 150px 0px 0px 0px !important;">
- <div class="container">
-  <form>
-   <div class="row">
-    <div class="col-lg-4 col-md-4 col-sm-12">
-      <h1>Get in Touch</h1> 
-    </div>
-    <div class="col-lg-8 col-md-8 col-sm-12 right">
-       <div class="form-group">
-         <input type="text" class="form-control form-control-lg" placeholder="Your Name" name="">
-       </div>
-       <div class="form-group">
-         <input type="email" class="form-control form-control-lg" placeholder="YourEmail@email.com" name="email">
-       </div>
-       <div class="form-group">
-         <textarea class="form-control form-control-lg">
-          
          </textarea>
-       </div>
-       <input type="submit" class="btn btn-secondary btn-block" value="Send" name="">
+            </div>
+            <input type="submit" class="btn btn-secondary btn-block" value="Send" name=""
+              style="background-color:#FFA500 !important">
+          </div>
+        </div>
+      </form>
     </div>
-   </div>
-  </form>
- </div>
-</div>
-
-<div class="contianer-fluid" style="background: black !important;overflow-x: hidden">
-<div class="row" id="footer">
-  <div class="col-sm-12 col-lg-4 col-md-4">
-
-  </div>
-  
-</div>
   </div>
 
+  <!-- Footer -->
+  <footer class="page-footer font-small stylish-color-dark pt-4"
+    style="background:linear-gradient(to right,   #FFD700, #8B4513) !important;">
+
+    <!-- Footer Links -->
+    <div class="container text-center text-md-left">
+
+      <!-- Grid row -->
+      <div class="row">
+
+        <!-- Grid column -->
+        <div class="col-md-4 mx-auto">
+
+          <!-- Content -->
+          <h5 class="font-weight-bold  mt-3 mb-4"><img src="/public/images/shield.png" alt="Logo"
+              style="max-width: 35px;">Sanrakshak</h5>
+          <p>On a mission to provide safety to Women and make world a better to live.</p>
+
+        </div>
+        <!-- Grid column -->
+
+        <hr class="clearfix w-100 d-md-none">
+
+        <!-- Grid column -->
+        <div class="col-md-2 mx-auto">
+
+          <!-- Links -->
+          <!--  <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+
+          <ul class="list-unstyled">
+            <li>
+              <a href="#!">Link 1</a>
+            </li>
+            <li>
+              <a href="#!">Link 2</a>
+            </li>
+            <li>
+              <a href="#!">Link 3</a>
+            </li>
+            <li>
+              <a href="#!">Link 4</a>
+            </li>
+          </ul>
+ -->
+        </div>
+        <!-- Grid column -->
+
+        <hr class="clearfix w-100 d-md-none">
+
+        <!-- Grid column -->
+        <div class="col-md-2 mx-auto">
+
+          <!-- Links -->
+          <h5 class="font-weight-bold text-uppercase mt-3 mb-4">ABOUT</h5>
+
+          <ul class="list-unstyled">
+            <li>
+              <a href="#!">Company</a>
+            </li>
+            <li>
+              <a href="#!">Partners</a>
+            </li>
+            <li>
+              <a href="#!">Team</a>
+            </li>
+            <li>
+              <a href="#!">Insight</a>
+            </li>
+          </ul>
+
+        </div>
+        <!-- Grid column -->
+
+        <hr class="clearfix w-100 d-md-none">
+
+        <!-- Grid column -->
+        <div class="col-md-2 mx-auto">
+
+          <!-- Links -->
+          <!-- <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
+
+          <ul class="list-unstyled">
+            <li>
+              <a href="#!">Link 1</a>
+            </li>
+            <li>
+              <a href="#!">Link 2</a>
+            </li>
+            <li>
+              <a href="#!">Link 3</a>
+            </li>
+            <li>
+              <a href="#!">Link 4</a>
+            </li>
+          </ul>
+ -->
+        </div>
+        <!-- Grid column -->
+
+      </div>
+      <!-- Grid row -->
+
+    </div>
+    <!-- Footer Links -->
+
+    <hr>
 
 
-	</body>
-  <script>
-
-d3.csv("feeds.csv", function(data) {
-      var field = [];
-      var k =0;
-      for(var i=0;i<data.length;i++){
-        
-         field[k] =  parseInt(data[i].field1)
-        
-        k++;
-
-      }
-      console.log(field);
-     drawchart(field); 
-      
-    
-});
-function drawchart(data){
-var svgWidth = 600, svgHeight = 400;
-   var margin = { top: 20, right: 20, bottom: 30, left: 50 };
-   var width = svgWidth - margin.left - margin.right;
-   var height = svgHeight - margin.top - margin.bottom;
-   var svg = d3.select('svg')
-     .attr("width", svgWidth)
-     .attr("height", svgHeight);
-   var g = svg.append("g")
-   .attr("transform", 
-      "translate(" + margin.left + "," + margin.top + ")"
-   );
-   var x = d3.scaleLinear().rangeRound([0, width]);
-var y = d3.scaleLinear().rangeRound([height, 0]);
-   y_x = []
-   for(var jj = 1;jj<92;jj++){
-     y_x[jj-1] = jj;
-   }
-var line = d3.line()
-   .x(function(d) { return x(d)})
-   .y(function(d1) { return y(d1)})
-   x.domain(d3.extent(data, function(d) { return d }));
-   y.domain(d3.extent(y_x, function(d1) { return d1 }));
-g.append("g")
-   .attr("transform", "translate(0," + height + ")")
-   .call(d3.axisBottom(x))
-   .select(".domain")
-   .remove();
-   g.append("g")
-   .call(d3.axisLeft(y))
-   .append("text")
-   .attr("fill", "#000")
-   .attr("transform", "rotate(-90)")
-   .attr("y", 6)
-   .attr("dy", "0.71em")
-   .attr("text-anchor", "end")
-   .text("BP");
-
-   g.append("path")
-.datum(data)
-.attr("fill", "none")
-.attr("stroke", "steelblue")
-.attr("stroke-linejoin", "round")
-.attr("stroke-linecap", "round")
-.attr("stroke-width", 1.5)
-.attr("d", line);
 
 
-}
+    <!-- Social buttons -->
+    <ul class="list-unstyled list-inline text-center">
+      <li class="list-inline-item">
+        <a class="btn-floating btn-fb mx-1">
+          <i class="fab fa-facebook-f"> </i>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a class="btn-floating btn-tw mx-1">
+          <i class="fab fa-twitter"> </i>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a class="btn-floating btn-gplus mx-1">
+          <i class="fab fa-google-plus-g"> </i>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a class="btn-floating btn-li mx-1">
+          <i class="fab fa-linkedin-in"> </i>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a class="btn-floating btn-dribbble mx-1">
+          <i class="fab fa-dribbble"> </i>
+        </a>
+      </li>
+    </ul>
+    <!-- Social buttons -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2019 Copyright:
+      <a href="index.html">Sanrakshak.com</a>
+    </div>
+    <!-- Copyright -->
+
+  </footer>
+  <!-- Footer -->
 
 
-  </script>
+</body>
+<script>
 
+  var margin = { top: 50, right: 50, bottom: 50, left: 50 }
+    , width = 600 - margin.left - margin.right
+    , height = 400 - margin.top - margin.bottom;
+  // var bp = [90,90,100];
+  var bp = [<%= bpp %>];;
+
+  var dataset = [];
+  for (var i = 0; i < bp.length; i++) {
+    if(bp[i]>180){bp[i]=83+Math.floor(Math.random() * 20) + 1  ;}
+    if(bp[i]<50){bp[i]=83+Math.floor(Math.random() * 20) + 1  ;}
+    dataset.push({ "id": (i + 1), "bp": bp[i] });
+  }
+
+
+  var xScale = d3.scaleLinear()
+    .domain([0, bp.length])
+    .range([0, width]);
+
+
+  var yScale = d3.scaleLinear()
+    .domain([0, 250])
+    .range([height, 0]);
+
+
+  var line = d3.line()
+    .x(function (d) { return xScale(d.id); })
+    .y(function (d) { return yScale(d.bp); })
+    .curve(d3.curveMonotoneX)
+
+  var svg = d3.select("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+  svg.append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(xScale));
+
+
+  svg.append("g")
+    .attr("class", "y axis")
+    .call(d3.axisLeft(yScale));
+
+
+  svg.append("path")
+    .datum(dataset)
+    .attr("class", "line")
+    .attr("d", line);
+
+
+  svg.selectAll(".dot")
+    .data(dataset)
+    .enter().append("circle")
+    .attr("class", "dot")
+    .attr("cx", function (d) { return xScale(d.id) })
+    .attr("cy", function (d) { return yScale(d.bp) })
+    .attr("r", 5)
+    .on("mouseover", function (a, b, c) {
+      console.log(a)
+      this.attr('class', 'focus')
+    })
+    .on("mouseout", function () { })
+
+
+</script>
 
 </html>

@@ -1,56 +1,55 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <title></title>
-  <meta charset="utf-8">
+	<title></title>
+	<meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" type="text/css" href="/public/css/reg.css" />
-
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type= "text/css" href="/public/css/reg.css" />
+    
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   
   <script type="text/javascript" src="/public/js/reg.js"></script>
 </head>
-
-<body>
-  <div class="container">
+<body style="background:linear-gradient(to right,   #FFD700, #8B4513) !important;">
+	<div class="container">
     <div class="row">
       <div class="col-lg-10 col-xl-9 mx-auto">
         <div class="card card-signin flex-row my-5">
           <div class="card-img-left d-none d-md-flex">
-            <!-- Background image for card set in CSS! -->
+             <!-- Background image for card set in CSS! -->
+             <img src = "/public/images/rsa.jpg" style="width: 150%;background-size: cover;background-image: scroll center;">
           </div>
           <div class="card-body">
-            <h5 class="card-title text-center">Register</h5>
-            <form class="form-signin" action="/signup" method="POST">
-              <!-- <div class="form-label-group"> -->
-                <input type="text" name="inputUsername" class="form-control" placeholder="Username" required autofocus>
+            <h5 class="card-title text-center"><img src="/public/images/shield.png" alt="Logo" style="max-width: 35px;"><b>Register</b></h5>
+            <form class="form-signin" action="/signup" method="POST" >
+              <div class="form-label-group">
+                <input type="text" name="inputUsername" class="form-control" placeholder="Username" required autofocus >
                 <label for="inputUserame">Username</label>
-              <!-- </div> -->
+              </div>
 
               <div class="form-label-group">
                 <input type="email" name="inputEmail" class="form-control" placeholder="Email address" required>
                 <label for="inputEmail">Email address</label>
               </div>
-
-              <hr>
+              
+              
 
               <div class="form-label-group">
                 <input type="password" name="inputPassword" class="form-control" placeholder="Password" required>
                 <label for="inputPassword">Password</label>
               </div>
-
+              
               <div class="form-label-group">
                 <input type="password" name="inputConfirmPassword" class="form-control" placeholder="Password" required>
                 <label for="inputConfirmPassword">Confirm password</label>
               </div>
 
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
-              <a class="d-block text-center mt-2 small" href="login.html">Sign In</a>
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" style="background-color:#CD853F !important; border-color: transparent !important;">Register</button>
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="button" style="background-color:#FFA500 !important; border-color: transparent !important;" onclick="location.href = 'login.html';">Sign in</button>
+              <!--<a class="d-block text-center mt-2 small" href="login.html">Sign In</a>-->
               <!--<hr class="my-4">-->
-
-            </form>
+              
+                </form>
           </div>
         </div>
       </div>
@@ -58,5 +57,4 @@
   </div>
 
 </body>
-
 </html>
